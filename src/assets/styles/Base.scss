@@ -1,0 +1,361 @@
+  @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&family=Roboto+Slab&display=swap');
+
+$primary: #18CDCA;
+$secondary: #FBFE69;
+$red: #f45959;
+$white: #fafafa;
+$black: #3E3E3E;
+
+@font-face {
+	font-family: 'Chivo', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Roboto Slab', serif;
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+$titleFont: 'Roboto Slab', serif;
+$bodyFont: 'Chivo', sans-serif;
+$bodySize: 1em;
+
+body {
+  color: $black;
+  background: $primary;
+  font-family: $bodyFont;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $titleFont;
+}
+p, span, li, input, button  {
+  font-family: $bodyFont;
+}
+
+// error message
+.errorMess {
+  color: $red;
+  text-align: center;
+  border: 1px solid $red;
+  border-radius: 3px;
+  margin: 20px 0 0;
+  padding: 10px 13px;
+
+  span {
+    // color: $black;
+  }
+}
+// error message end
+
+.btn {
+  font-display: swap;
+  color: $white;
+  padding: 6px 10px;
+  border: none;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  & a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  &.md {
+    width: max-content;
+    padding: 6px 16px;
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &.lg {
+    width: 100%;
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &.confirm {
+    color: $white;
+    border: 1px solid $white;
+    border-radius:1.5rem;
+  }
+  &.warning {
+    color: $red;
+    border: 1px solid $red;
+    border-radius:1.5rem;
+  }
+}
+// button animation
+@keyframes button-loading {
+  0% {
+
+  }
+  20% {
+    color:transparent;
+    transform:scale(1,1);
+  }
+  40% {
+    border-color:$secondary;
+    background-color:transparent;
+    transform:scale(1,1);
+  }
+  60%  {
+    transform:scale(.7,1.1);
+    // margin-left:1.25rem;
+    width:2.5rem;
+    text-indent:-0.6125rem;
+    color:transparent;
+    border-color:$secondary;
+    background-color:$secondary;
+  }
+  80%  {
+    transform:scale(1,1);
+  }
+  100% {
+    // margin-left:1.25rem;
+    width:2.5rem;
+    background-color:$secondary;
+    border-color:$secondary;
+    color:transparent;
+  }
+}
+@keyframes button-dot-intro {
+  0% {
+    opacity:0;
+  }
+  60% {
+    opacity:1;
+    transform:scale(1,1);
+  }
+  100% {
+    transform:scale(.75,.75);
+  }
+}
+
+@keyframes button-dot-pulse {
+  0% {
+    opacity:1;
+    transform:scale(.75,.75);
+  }
+  15% {
+    transform:scale(.85,.85);
+  }
+  45% {
+    transform:scale(.75,.75);
+  }
+  55% {
+    transform:scale(.95,.95);
+  }
+  85% {
+    transform:scale(.75,.75);
+  }
+  100% {
+    opacity:1;
+    transform:scale(.75,.75);
+  }
+}
+
+@keyframes button-ready {
+  0% {
+    // margin-left:1.25rem;
+    width:2.5rem;
+  }
+  10% {
+    background-color:$secondary;
+    border-color:$secondary;
+  }
+  70% {
+    margin:0;
+    width:7.25rem;
+    background-color:$primary;
+    transform:scale(1.1,1.1);
+  }
+  100% {
+    margin:0;
+    width:7rem;
+    border-color:#8cce1e;
+    background-color:$primary;
+  }
+}
+
+@keyframes button-dot-outro {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+    transform:scale(1,1);
+  }
+}
+@keyframes button-ready-label {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+button {
+  position:relative;
+  overflow:hidden;
+  width:7rem;
+  color:$secondary;
+  border:2px solid $secondary;
+  background-color:transparent;
+  cursor:pointer;
+  line-height:2;
+  margin:auto;
+  padding:0;
+  border-radius:1.5rem;
+  font-size:1.125rem;
+  text-transform:lowercase;
+  outline:none;
+  transition:transform .125s;
+
+  &:active {
+    transform:scale(.9,.9);
+  }
+
+  &:before,
+  &:after {
+    position:absolute;
+    opacity:0;
+    border-radius:50%;
+    background-color:$primary;
+    top:50%;
+    left:50%;
+    margin-top:-1.125rem;
+    margin-left:-1.125rem;
+    width:2.25rem;
+    height:2.25rem;
+    content:'';
+    z-index:1;
+  }
+
+  &.loading {
+    animation:button-loading .5s forwards;
+  }
+
+  &.loading:before {
+    opacity:1;
+    animation:button-dot-intro .5s forwards;
+  }
+
+  &.loading:after {
+    opacity:0;
+    animation:button-dot-pulse 1.5s infinite .5s;
+  }
+
+  &.ready {
+    text-indent:0;
+    color:transparent;
+    background-color:$secondary;
+    animation:button-ready .333s forwards;
+  }
+
+  &.ready:before {
+    position:absolute;
+    left:0;
+    right:0;
+    top:auto;
+    margin:0;
+    width:auto;
+    height:auto;
+    border-radius:0;
+    background-color:transparent;
+    color:#8cce1e;
+    content:'ready';
+    opacity:0;
+    z-index:2;
+    animation:button-ready-label .5s forwards .275s;
+  }
+
+  &.ready:after {
+    opacity:1;
+    animation:button-dot-outro .333s;
+  }
+}
+// button animation end
+
+// modals
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($white, 0.8);
+  display: table;
+  transition: opacity 0.3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: $primary;
+  border-radius: 2px;
+  box-shadow: 2px 8px 16px 0px rgba(24,50,115,0.06);
+  transition: all 0.3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+  margin-top: 0;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.modal-footer {
+  color: $white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+}
+// modals end
