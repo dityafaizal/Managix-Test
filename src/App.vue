@@ -29,10 +29,6 @@ export default {
     ProgState,
     DoneState
   },
-  created() {
-    fbq('track', 'PageView');
-    console.log(fbq);
-  },
   computed: {
     ...mapGetters('moduleGetPost', {
       getUser: 'getNewUser'
