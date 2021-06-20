@@ -6,6 +6,8 @@
 </template>
 
 <script>
+
+import { computed } from 'vue'
 import Card from './Card.vue'
 
 export default {
@@ -13,14 +15,18 @@ export default {
   components: {
     Card
   },
-  computed: {
-    showPost() {
-      const data = this.getUser
+  setup(props) {
+    const showPost = computed(function() {
+      const data = props.getUser
       if (data.state == "Done") {
         return data
       } else {
         return false
       }
+    });
+
+    return {
+      showPost
     }
   }
 }

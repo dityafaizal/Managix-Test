@@ -48,6 +48,7 @@ export default {
   @import '~@/assets/styles/Base.scss';
 
   #app {
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
